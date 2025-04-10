@@ -1,0 +1,20 @@
+from phi.tool import tool
+
+# Coffee Menu
+MENU = {
+    "Espresso": "₹100",
+    "Cappuccino": "₹120",
+    "Latte": "₹130",
+    "Mocha": "₹150",
+    "Cold Coffee": "₹140"
+}
+
+@tool
+def show_menu() -> str:
+    """
+    Returns the coffee menu.
+    """
+    menu_text = "Here's our coffee menu:\n"
+    for item, price in MENU.items():
+        menu_text += f"- {item}: {price}\n"
+    return menu_text
