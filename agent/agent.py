@@ -1,24 +1,15 @@
 from phi.agent import Agent
 from phi.model.groq import Groq
 from dotenv import load_dotenv
-from tools.menu_tool import show_menu
 
 
 # Load environment variables
 load_dotenv()
 
-# Create the Groq model instance
-groq_model = Groq(
-    id="llama3-8b-8192",
-    api_key=os.getenv("GROQ_API_KEY")
+groq_agent = Agent(
+    model=Groq(id="llama-3.3-70b-versatile"),
+    description="You are a cooffee shop assistant who know well about both customers' tastes and about the menu",
+    markdown=True
 )
 
-# Create the agent with tools
-agent = Agent(
-    model=groq_model,
-    tools=[show_menu]
-)
-
-# Call the agent
-if __name__ == "__main__":
-    agent.print_response("What coffees do you have?")
+groq_agent.print_response("HIi, Suggest me a drink for the moment")
